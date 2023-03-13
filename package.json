@@ -1,0 +1,36 @@
+{
+  "name": "proofreadme",
+  "version": "0.0.1",
+  "description": "Readme enforcement and validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l2silver/proofreadme.git"
+  },
+  "keywords": [
+    "readme",
+    "enforce",
+    "valid"
+  ],
+  "author": "Leigh Silverstein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/l2silver/proofreadme/issues"
+  },
+  "homepage": "https://github.com/l2silver/proofreadme#readme",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "marked": "^4.2.12",
+    "node-html-parser": "^6.1.5",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/marked": "^4.0.8",
+    "@types/node": "^18.15.0",
+    "ts-jest": "^29.0.5"
+  }
+}
