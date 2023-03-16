@@ -3,3 +3,4 @@ src
 jest.config.js
 tests/README-long.md
 tsconfig.json
+test-repo
