@@ -1,5 +1,28 @@
 import parse, { isTagBiggerThanOrEqualLevel } from '.';
 describe('parse', ()=>{
+  it('should error out if header does not exist', (done)=>{
+    try {
+      parse(
+        `
+        # Welcome
+        \`\`\`
+        # This is some code
+        echo Hello
+        \`\`\`
+        \`\`\`Hello\`\`\`
+        `,
+        {
+          headers: ['# Welc ome']
+        }
+        )
+      } catch(e: any){
+        console.log('error', e)
+        if(/Header # Welc ome does not exist in readme file/.test(e.message)){
+          return done()
+        }
+        throw e;
+      }
+  })
   it('should find all code segments', ()=>{
     const code = parse(
 `

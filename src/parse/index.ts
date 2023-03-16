@@ -21,18 +21,26 @@ export default function parse(md: string, options : { headers: string[], ignoreH
   const root = html.parse(rawHtml);
   let codes : string[] = []
   options.headers.forEach(header=>{
+    console.log('header', header)
     const headerLevel = getHeaderLevel(header)
+    console.log('headerLevel', headerLevel)
     const headerTag = `h${headerLevel.length}`
+    console.log('headerTag', headerTag)
     const selector = `${headerTag}#${header.slice(headerLevel.length + 1).replace(/ /g, '-').toLowerCase()}`
     let currentNode = root.querySelector(selector)
+    if(!currentNode) throw Error(`Header ${header} does not exist in readme file.`)
     let foundNextBiggerOrEqualHeader = false
     while(!foundNextBiggerOrEqualHeader){
-      const nextNode = currentNode?.nextElementSibling
+      if(!currentNode){
+        foundNextBiggerOrEqualHeader = true
+        break;
+      }
+      const nextNode : any = currentNode.nextElementSibling
       if(!nextNode || isTagBiggerThanOrEqualLevel(nextNode?.rawTagName, headerLevel.length)){
         foundNextBiggerOrEqualHeader = true
         break;
       }
-      codes = codes.concat(nextNode.getElementsByTagName('code').map(node => node.innerText))
+      codes = codes.concat(nextNode.getElementsByTagName('code').map((node : HTMLElement) => node.innerText))
       currentNode = nextNode;
     }
   })

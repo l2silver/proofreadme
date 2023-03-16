@@ -10,5 +10,5 @@ export default async function main(proc: any){
   // @ts-expect-error
   const codes = parse(readme, options);
   await exec(codes);
-  console.log('README.md processed without errors.')
+  console.log('README.md processed successfully.')
 }

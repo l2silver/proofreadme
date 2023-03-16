@@ -4,7 +4,10 @@
   "description": "Readme enforcement and validation",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "build": "tsc && chmod +x dist/index.js",
+    "test": "jest",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -12,8 +15,8 @@
   },
   "keywords": [
     "readme",
-    "enforce",
-    "valid"
+    "enforcement",
+    "validation"
   ],
   "author": "Leigh Silverstein",
   "license": "MIT",
@@ -24,13 +27,17 @@
   "dependencies": {
     "commander": "^10.0.0",
     "marked": "^4.2.12",
-    "node-html-parser": "^6.1.5",
-    "typescript": "^4.9.5"
+    "node-html-parser": "^6.1.5"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@types/marked": "^4.0.8",
     "@types/node": "^18.15.0",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "bin": {
+    "proofreadme": "./dist/index.js"
   }
 }

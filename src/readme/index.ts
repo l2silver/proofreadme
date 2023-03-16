@@ -4,12 +4,10 @@ export default function getReadme(readmePath: string){
   let readme;
   if(readmePath){
     try {
-      if (fs.existsSync(readmePath)) {
-        readme = fs.readFileSync(readmePath, 'utf8');
-      }
+      readme = fs.readFileSync(readmePath, 'utf8');
     } catch(err) {
       console.error('Your readme file does not exist in the location you set: ', readmePath)
-      throw err
+      throw Error(`Your readme file does not exist in the location you set: ${readmePath}`)
     }
   } else {
     try {

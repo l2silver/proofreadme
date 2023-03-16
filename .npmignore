@@ -1,0 +1,5 @@
+src
+!dist
+jest.config.js
+tests/README-long.md
+tsconfig.json
